@@ -11,7 +11,7 @@ const { Option } = Select;
 const LoginPage = () => {
   const [form] = Form.useForm();
   const [showPassword, setShowPassword] = useState(false);
-  const [language, setLanguage] = useState("English");
+
   const nav = useNavigate();
   const onFinish = async (values) => {
     console.log(values);

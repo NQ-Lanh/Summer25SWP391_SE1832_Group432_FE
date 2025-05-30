@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { Form, Input, Button, Checkbox, Select, Divider, message } from "antd";
-import { FaEye, FaEyeSlash, FaGoogle, FaMicrosoft } from "react-icons/fa";
-import "./LoginPage.css";
-import axios from "axios";
+import { Button, Checkbox, Divider, Form, Input, Select } from 'antd';
+import axios from 'axios';
+import React, { useState } from 'react'
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 
-const { Option } = Select;
-
-const LoginPage = () => {
+function RegisterPage() {
   const [form] = Form.useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [language, setLanguage] = useState("English");
@@ -38,7 +35,7 @@ const LoginPage = () => {
           <h2 className="title">School Health Portal Login</h2>
           <p className="subtitle">Welcome back! Please enter your details</p>
 
-<Form
+          <Form
   form={form}
   layout="vertical"
   name="loginForm"
@@ -145,14 +142,6 @@ const LoginPage = () => {
     <Button block icon={<FaGoogle />} className="btn secondary">
       Google
     </Button>
-    <Button
-      block
-      icon={<FaMicrosoft />}
-      className="btn secondary"
-      style={{ marginTop: "8px" }}
-    >
-      Microsoft
-    </Button>
   </div>
 </Form>
 
@@ -160,6 +149,6 @@ const LoginPage = () => {
       </div>
     </div>
   );
-};
+}
 
-export default LoginPage;
+export default RegisterPage

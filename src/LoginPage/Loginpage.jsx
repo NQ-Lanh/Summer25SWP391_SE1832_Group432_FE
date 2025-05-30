@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { Form, Input, Button, Checkbox, Select, Divider, message } from "antd";
 import { FaEye, FaEyeSlash, FaGoogle, FaMicrosoft } from "react-icons/fa";
 import "./LoginPage.css";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -10,10 +12,21 @@ const LoginPage = () => {
   const [form] = Form.useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [language, setLanguage] = useState("English");
-
+  const nav = useNavigate();
   const onFinish = async (values) => {
+    console.log(values);
     console.log("Form submitted:", values);
-    await axios.post("https://localhost:7178/api/Auth/login");
+    try {
+      const respsonse = await axios.post(
+        "http://localhost:5092/api/Auth/login",
+        values
+      );
+      toast.success(respsonse?.data?.message);
+      nav("/");
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+
     console.log("Login successful!");
   };
 
@@ -33,129 +46,75 @@ const LoginPage = () => {
       </div>
 
       <div className="login-form-section">
-
         <div className="form-wrapper">
           <h2 className="title">School Health Portal Login</h2>
           <p className="subtitle">Welcome back! Please enter your details</p>
 
-<Form
-  form={form}
-  layout="vertical"
-  name="loginForm"
-  initialValues={{ rememberMe: false }}
-  onFinish={onFinish}
-  onFinishFailed={onFinishFailed}
->
-  <Form.Item
-    label="Username"
-    name="email"
-    rules={[
-      { required: true, message: "Phone number is required" },
-      { min: 4, message: "Username must be at least 6 characters" },
-    ]}
-  >
-    <Input />
-  </Form.Item>
+          <Form
+            form={form}
+            layout="vertical"
+            Add
+            commentMore
+            actions
+            name="loginForm"
+            initialValues={{ rememberMe: false }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+          >
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[
+                { required: true, message: "Phone number is required" },
+                {
+                  min: 4,
+                  message: "Username must be at least 6 characters",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-  <Form.Item
-    label="Password"
-    name="password"
-    rules={[
-      { required: true, message: "Password is required" },
-      { min: 6, message: "Password must be at least 6 characters" },
-    ]}
-  >
-    <Input.Password
-      iconRender={(visible) => (visible ? <FaEyeSlash /> : <FaEye />)}
-      visibilityToggle={{
-        visible: showPassword,
-        onVisibleChange: setShowPassword,
-      }}
-    />
-  </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                { required: true, message: "Password is required" },
+                { min: 6, message: "Password must be at least 6 characters" },
+              ]}
+            >
+              <Input.Password
+                iconRender={(visible) => (visible ? <FaEyeSlash /> : <FaEye />)}
+                visibilityToggle={{
+                  visible: showPassword,
+                  onVisibleChange: setShowPassword,
+                }}
+              />
+            </Form.Item>
 
-  <Form.Item
-    label="Confirm Password"
-    name="confirmPassword"
-    dependencies={['password']}
-    rules={[
-      { required: true, message: "Please confirm your password" },
-      ({ getFieldValue }) => ({
-        validator(_, value) {
-          if (!value || getFieldValue('password') === value) {
-            return Promise.resolve();
-          }
-          return Promise.reject(new Error("Passwords do not match"));
-        },
-      }),
-    ]}
-  >
-    <Input.Password />
-  </Form.Item>
+            <div className="form-options">
+              <Form.Item name="rememberMe" valuePropName="checked" noStyle>
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
+              <a href="#" className="forgot-password">
+                Forgot your password?
+              </a>
+            </div>
 
-  <Form.Item
-    label="Phone Number"
-    name="phone"
-    rules={[
-      { required: true, message: "Phone number is required" },
-      { pattern: /^\d{10,15}$/, message: "Phone number is not valid" },
-    ]}
-  >
-    <Input />
-  </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" block>
+                Sign in
+              </Button>
+            </Form.Item>
 
-  <Form.Item
-    label="Address"
-    name="address"
-    rules={[{ required: true, message: "Address is required" }]}
-  >
-    <Input.TextArea rows={2} />
-  </Form.Item>
+            <Divider>Or continue with</Divider>
 
-  <Form.Item
-    label="Gender"
-    name="gender"
-    rules={[{ required: true, message: "Please select your gender" }]}
-  >
-    <Select placeholder="Select gender">
-      <Select.Option value="male">Male</Select.Option>
-      <Select.Option value="female">Female</Select.Option>
-      <Select.Option value="other">Other</Select.Option>
-    </Select>
-  </Form.Item>
-
-  <div className="form-options">
-    <Form.Item name="rememberMe" valuePropName="checked" noStyle>
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
-    <a href="#" className="forgot-password">
-      Forgot your password?
-    </a>
-  </div>
-
-  <Form.Item>
-    <Button type="primary" htmlType="submit" block>
-      Sign in
-    </Button>
-  </Form.Item>
-
-  <Divider>Or continue with</Divider>
-
-  <div className="oauth-buttons">
-    <Button block icon={<FaGoogle />} className="btn secondary">
-      Google
-    </Button>
-    <Button
-      block
-      icon={<FaMicrosoft />}
-      className="btn secondary"
-      style={{ marginTop: "8px" }}
-    >
-      Microsoft
-    </Button>
-  </div>
-</Form>
-
+            <div className="oauth-buttons">
+              <Button block icon={<FaGoogle />} className="btn secondary">
+                Google
+              </Button>
+            </div>
+          </Form>
         </div>
       </div>
     </div>

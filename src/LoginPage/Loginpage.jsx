@@ -33,17 +33,6 @@ const LoginPage = () => {
       </div>
 
       <div className="login-form-section">
-        <div className="language-select">
-          <Select
-            value={language}
-            onChange={setLanguage}
-            style={{ width: 120 }}
-          >
-            <Option value="English">English</Option>
-            <Option value="Spanish">Español</Option>
-            <Option value="French">Français</Option>
-          </Select>
-        </div>
 
         <div className="form-wrapper">
           <h2 className="title">School Health Portal Login</h2>

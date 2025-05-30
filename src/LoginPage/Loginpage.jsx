@@ -38,7 +38,7 @@ const LoginPage = () => {
     <div className="login-container">
       <div className="login-image-section">
         <img
-          src="https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="images/hinh-anh-mam-non_23202317.jpg "
           alt="Healthcare"
           className="login-image"
         />
@@ -47,8 +47,13 @@ const LoginPage = () => {
 
       <div className="login-form-section">
         <div className="form-wrapper">
-          <h2 className="title">School Health Portal Login</h2>
-          <p className="subtitle">Welcome back! Please enter your details</p>
+          <img
+            src="images/Screenshot_2025-05-27_080730-removebg-preview.png"
+            alt=""
+          />
+          <p className="subtitle welcome-text">
+            Chào mừng bạn đến với phần mềm quản lí y tế học đường
+          </p>
 
           <Form
             form={form}
@@ -68,7 +73,7 @@ const LoginPage = () => {
                 { required: true, message: "Phone number is required" },
                 {
                   min: 4,
-                  message: "Username must be at least 6 characters",
+                  message: "Mật khẩu tối thiểu phải 6 kí tự",
                 },
               ]}
             >
@@ -94,24 +99,26 @@ const LoginPage = () => {
 
             <div className="form-options">
               <Form.Item name="rememberMe" valuePropName="checked" noStyle>
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox>Nhớ mật khẩu</Checkbox>
               </Form.Item>
               <a href="#" className="forgot-password">
-                Forgot your password?
+                Quên mật khẩu?
               </a>
             </div>
 
             <Form.Item>
               <Button type="primary" htmlType="submit" block>
-                Sign in
+                Đăng nhập
               </Button>
             </Form.Item>
 
-            <Divider>Or continue with</Divider>
-
             <div className="oauth-buttons">
-              <Button block icon={<FaGoogle />} className="btn secondary">
-                Google
+              <Button
+                block
+                className="btn secondary"
+                onClick={() => nav("/register")}
+              >
+                Đăng ký tài khoản
               </Button>
             </div>
           </Form>

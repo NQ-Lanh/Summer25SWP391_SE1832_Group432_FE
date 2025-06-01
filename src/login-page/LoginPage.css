@@ -3,28 +3,25 @@
   min-height: 98vh;
   font-family: Arial, sans-serif;
 
-  border-radius: 6px;  
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 1rem auto;
   max-width: 1440px;
 }
 
-
 .welcome-text {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
-  font-size: 1.4rem;      
-  font-weight: 600;     
-  color: #1e3a8a;          
-  text-align: center;      
-  margin-bottom: 2rem;     
-  letter-spacing: 0.05em;  
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); 
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-
 .login-image-section {
-
   position: relative;
   display: none;
   width: 55%;
@@ -75,10 +72,16 @@
   background-color: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
 }
 
+.form-wrapper img {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+}
 
 .title {
   font-size: 24px;

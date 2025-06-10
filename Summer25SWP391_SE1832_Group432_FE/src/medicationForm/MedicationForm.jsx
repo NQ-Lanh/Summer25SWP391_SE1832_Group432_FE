@@ -109,7 +109,7 @@ const MedicationForm = () => {
             <Form.Item 
               name={['medicines', currentPage - 1, 'medicineName']} 
               label=" Tên thuốc" 
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'vui lòng nhập thông tin' }]}
             > 
               <Input placeholder="Nhập tên thuốc" />
             </Form.Item>
@@ -117,7 +117,7 @@ const MedicationForm = () => {
             <Form.Item 
               name={['medicines', currentPage - 1, 'dosage']} 
               label=" Liều lượng" 
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'vui lòng nhập thông tin' }]}
             > 
               <Input placeholder="VD: 1 viên/1 lần uống" />
             </Form.Item>
@@ -125,7 +125,7 @@ const MedicationForm = () => {
             <Form.Item 
               name={['medicines', currentPage - 1, 'time']} 
               label=" Thời điểm uống" 
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'vui lòng nhập thông tin' }]}
             > 
               <Select 
                 mode="multiple"
@@ -137,24 +137,6 @@ const MedicationForm = () => {
                 <Option value="evening">Tối</Option>
               </Select>
             </Form.Item>
-
-            <div className="row">
-              <Form.Item 
-                name={['medicines', currentPage - 1, 'startDate']} 
-                label=" Ngày bắt đầu" 
-                rules={[{ required: true }]}
-              > 
-                <DatePicker format="DD/MM/YYYY" />
-              </Form.Item>
-
-              <Form.Item 
-                name={['medicines', currentPage - 1, 'endDate']} 
-                label=" Ngày kết thúc" 
-                rules={[{ required: true }]}
-              > 
-                <DatePicker format="DD/MM/YYYY" />
-              </Form.Item>
-            </div>
 
             <Form.Item 
               name={['medicines', currentPage - 1, 'note']} 

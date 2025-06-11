@@ -271,14 +271,7 @@ const Header = () => {
                   >
                     Gửi thuốc
                   </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      handleUserClose();
-                      navigate("");
-                    }}
-                  >
-                    Quản lý
-                  </MenuItem>
+
                   <MenuItem
                     onClick={() => {
                       handleUserClose();

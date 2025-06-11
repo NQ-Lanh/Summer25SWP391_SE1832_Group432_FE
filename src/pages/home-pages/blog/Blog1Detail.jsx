@@ -9,7 +9,8 @@ import {
   Divider,
 } from "@mui/material";
 import Header from "../Header/Header";
-
+import Footer from "../Footer/Footer";
+Footer
 const Blog1Detail = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -187,6 +188,7 @@ const Blog1Detail = () => {
             thần và kỹ năng sống.
           </Typography>
         </Paper>
+        <Footer />
       </Container>
     </Box>
   );

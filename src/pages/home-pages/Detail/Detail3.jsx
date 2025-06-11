@@ -23,6 +23,8 @@ import MoodIcon from "@mui/icons-material/Mood";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import GroupsIcon from "@mui/icons-material/Groups";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import DetailLayout from "./DetailLayout";
 
 const Detail3 = () => {
   const scrollToSection = (elementId) => {
@@ -42,111 +44,28 @@ const Detail3 = () => {
       }}
     >
       <Header onScrollToSection={scrollToSection} />
-
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 2 }}>
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            sx={{
-              fontWeight: "bold",
-              color: "primary.main",
-              textAlign: "center",
-              mb: 3,
-              textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
-            }}
-          >
-            Sức Khỏe Tâm Thần Ở Tuổi Học Đường
-          </Typography>
-
-          {/* Article Meta Info */}
-          <Box
-            sx={{ display: "flex", justifyContent: "center", gap: 4, mb: 6 }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "text.secondary",
-              }}
-            >
+      <DetailLayout
+        title="Sức Khỏe Tâm Thần Ở Tuổi Học Đường"
+        meta={
+          <>
+            <Box sx={{ display: "flex", alignItems: "center", color: "text.secondary" }}>
               <CalendarTodayIcon sx={{ fontSize: 20, mr: 1 }} />
-              <Typography variant="body2">
-                Ngày đăng: {new Date().toLocaleDateString("vi-VN")}
-              </Typography>
+              <Typography variant="body2">Ngày đăng: {new Date().toLocaleDateString("vi-VN")}</Typography>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "text.secondary",
-              }}
-            >
+            <Box sx={{ display: "flex", alignItems: "center", color: "text.secondary" }}>
               <TimerIcon sx={{ fontSize: 20, mr: 1 }} />
               <Typography variant="body2">8 phút đọc</Typography>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "text.secondary",
-              }}
-            >
+            <Box sx={{ display: "flex", alignItems: "center", color: "text.secondary" }}>
               <PersonIcon sx={{ fontSize: 20, mr: 1 }} />
-              <Typography variant="body2">
-                Tác giả: Chuyên gia tâm lý học đường
-              </Typography>
+              <Typography variant="body2">Tác giả: Chuyên gia tâm lý học đường</Typography>
             </Box>
-          </Box>
-
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              height: "500px",
-              borderRadius: 4,
-              overflow: "hidden",
-              boxShadow: "0 8px 40px rgba(0,0,0,0.1)",
-              mb: 6,
-            }}
-          >
-            <Box
-              component="img"
-              src="/images/details3.png"
-              alt="Mental health in schools"
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transition: "transform 0.3s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            />
-            <Box
-              sx={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
-                color: "white",
-                p: 3,
-              }}
-            >
-              <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
-                Nhận Biết và Hỗ Trợ Sức Khỏe Tâm Thần Học Đường
-              </Typography>
-              <Typography variant="body1">
-                Hướng dẫn cho phụ huynh và giáo viên về cách quan tâm đến sức
-                khỏe tinh thần của học sinh
-              </Typography>
-            </Box>
-          </Box>
-        </Paper>
-
+          </>
+        }
+        image="/images/details3.png"
+        imageTitle="Nhận Biết và Hỗ Trợ Sức Khỏe Tâm Thần Học Đường"
+        imageDesc="Hướng dẫn cho phụ huynh và giáo viên về cách quan tâm đến sức khỏe tinh thần của học sinh"
+      >
         <Typography
           variant="body1"
           paragraph
@@ -415,7 +334,8 @@ const Detail3 = () => {
             nhiệm chung tay của cả gia đình và nhà trường.
           </Typography>
         </Box>
-      </Container>
+      </DetailLayout>
+      <Footer />
     </Box>
   );
 };

@@ -2,7 +2,6 @@
   display: flex;
   min-height: 98vh;
   font-family: Arial, sans-serif;
-
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -68,7 +67,7 @@
 
 .form-wrapper {
   max-width: 450px;
-  width: 130%;
+  width: 100%;
   background-color: white;
   padding: 2rem;
   border-radius: 12px;
@@ -223,4 +222,4 @@
 }
 .icon.microsoft {
   color: #0078d4;
-}
+} 

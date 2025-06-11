@@ -21,6 +21,8 @@ import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import TimerIcon from "@mui/icons-material/Timer";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
+import Footer from "../Footer/Footer";
+import DetailLayout from "./DetailLayout";
 
 const Detail2 = () => {
   const scrollToSection = (elementId) => {
@@ -40,111 +42,28 @@ const Detail2 = () => {
       }}
     >
       <Header onScrollToSection={scrollToSection} />
-
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 2 }}>
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            sx={{
-              fontWeight: "bold",
-              color: "primary.main",
-              textAlign: "center",
-              mb: 3,
-              textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
-            }}
-          >
-            Hướng Dẫn Chế Độ Dinh Dưỡng Cho Học Sinh Tiểu Học
-          </Typography>
-
-          {/* Article Meta Info */}
-          <Box
-            sx={{ display: "flex", justifyContent: "center", gap: 4, mb: 6 }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "text.secondary",
-              }}
-            >
+      <DetailLayout
+        title="Hướng Dẫn Chế Độ Dinh Dưỡng Cho Học Sinh Tiểu Học"
+        meta={
+          <>
+            <Box sx={{ display: "flex", alignItems: "center", color: "text.secondary" }}>
               <CalendarTodayIcon sx={{ fontSize: 20, mr: 1 }} />
-              <Typography variant="body2">
-                Ngày đăng: {new Date().toLocaleDateString("vi-VN")}
-              </Typography>
+              <Typography variant="body2">Ngày đăng: {new Date().toLocaleDateString("vi-VN")}</Typography>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "text.secondary",
-              }}
-            >
+            <Box sx={{ display: "flex", alignItems: "center", color: "text.secondary" }}>
               <TimerIcon sx={{ fontSize: 20, mr: 1 }} />
               <Typography variant="body2">10 phút đọc</Typography>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "text.secondary",
-              }}
-            >
+            <Box sx={{ display: "flex", alignItems: "center", color: "text.secondary" }}>
               <PersonIcon sx={{ fontSize: 20, mr: 1 }} />
-              <Typography variant="body2">
-                Tác giả: Chuyên gia dinh dưỡng
-              </Typography>
+              <Typography variant="body2">Tác giả: Chuyên gia dinh dưỡng</Typography>
             </Box>
-          </Box>
-
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              height: "500px",
-              borderRadius: 4,
-              overflow: "hidden",
-              boxShadow: "0 8px 40px rgba(0,0,0,0.1)",
-              mb: 6,
-            }}
-          >
-            <Box
-              component="img"
-              src="/images/detail2.jpg"
-              alt="Healthy eating for students"
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transition: "transform 0.3s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            />
-            <Box
-              sx={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
-                color: "white",
-                p: 3,
-              }}
-            >
-              <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
-                Dinh dưỡng - Nền tảng cho sự phát triển toàn diện
-              </Typography>
-              <Typography variant="body1">
-                Khám phá cách xây dựng thực đơn cân bằng và lành mạnh cho học
-                sinh tiểu học
-              </Typography>
-            </Box>
-          </Box>
-        </Paper>
-
+          </>
+        }
+        image="/images/detail2.jpg"
+        imageTitle="Dinh dưỡng - Nền tảng cho sự phát triển toàn diện"
+        imageDesc="Khám phá cách xây dựng thực đơn cân bằng và lành mạnh cho học sinh tiểu học"
+      >
         <Typography
           variant="body1"
           paragraph
@@ -199,10 +118,7 @@ const Detail2 = () => {
                   <ListItemIcon>
                     <LocalDiningIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText
-                    primary={<Typography variant="h6">Tinh bột</Typography>}
-                    secondary="Cơm, bún, bánh mì, khoai..."
-                  />
+                  <ListItemText primary="Chất bột đường (glucid): cơm, mì, bún, khoai, ngô..." />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
@@ -409,7 +325,8 @@ const Detail2 = () => {
             thật đầy đủ và yêu thương!
           </Typography>
         </Box>
-      </Container>
+      </DetailLayout>
+      <Footer />
     </Box>
   );
 };

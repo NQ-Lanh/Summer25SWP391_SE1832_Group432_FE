@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Profiler } from "react";
 import "antd/dist/reset.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 import LoginPage from "./pages/Authen_page/LoginForm";
-import RegisterPage from "./pages/Authen_page/RegisterPage";
+import RegisterPage from "./pages/Authen_page/RegisterForm";
 import HomePage from "./pages/home-pages/HomePage";
 
 import Header from "./pages/home-pages/Header/Header";
@@ -24,10 +24,10 @@ import BlogDetail from "./pages/home-pages/Detail/Detail1";
 import Detail3 from "./pages/home-pages/Detail/Detail3";
 import Detail2 from "./pages/home-pages/Detail/Detail2";
 
-import EventPage from "./pages/home-pages/ParentPage/Event";
 import Vaccine_event from "./dashboard/dashboad_element/Create_event/Vaccine_event";
-import Profile from "./pages/home-pages/ParentPage/profile";
-import HealthProfileCreatePage from "./pages/home-pages/ParentForm/HealthProfileCreate";
+import Profile from "./pages/home-pages/ParentForm/profile";
+import HealthProfileCreate from "./pages/home-pages/ParentForm/HealthProfileCreate";
+import Event from "./pages/home-pages/ParentForm/Event";
 
 function App() {
   const router = createBrowserRouter([
@@ -115,11 +115,11 @@ function App() {
 
     {
       path: "/create-health-profile",
-      element: <HealthProfileCreatePage />,
+      element: <HealthProfileCreate />,
     },
     {
-      path: "profile",
-      element: <Profile />
+      path: "/profile",
+      element: <Profile />,
     },
     {
       path: "/dashboard",
@@ -148,11 +148,10 @@ function App() {
       element: (
         <>
           <Header />
-          <EventPage />
+          <Event />
         </>
       ),
     },
-
   ]);
   return (
     <Provider store={store}>

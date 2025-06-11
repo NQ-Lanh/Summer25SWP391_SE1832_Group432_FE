@@ -94,10 +94,9 @@ function RegisterPage() {
           dependencies={["password"]}
           rules={[
             { required: true, message: "Vui lòng xác nhận mật khẩu" },
-            () => ({
-              validator(_, value, allValues) {
-                const password = allValues ? allValues.password : undefined;
-                if (!value || password === value) {
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
                 return Promise.reject(new Error("Mật khẩu xác nhận không khớp"));

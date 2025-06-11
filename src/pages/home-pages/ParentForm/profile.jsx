@@ -1,6 +1,22 @@
 import React, { useState } from "react";
-import { Card, Avatar, Typography, Button, Row, Col, Modal, Form, Input, Select, message } from "antd";
-import { EditOutlined, UserOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import {
+  Card,
+  Avatar,
+  Typography,
+  Button,
+  Row,
+  Col,
+  Modal,
+  Form,
+  Input,
+  Select,
+  message,
+} from "antd";
+import {
+  EditOutlined,
+  UserOutlined,
+  ArrowLeftOutlined,
+} from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 // Dữ liệu mẫu, bạn có thể thay thế bằng dữ liệu thực tế lấy từ API hoặc props
@@ -34,18 +50,24 @@ export default function Profile() {
 
   // Xử lý lưu thông tin
   const handleSave = () => {
-    form.validateFields().then(values => {
-      setParentInfo(prev => ({ ...prev, ...values }));
+    form.validateFields().then((values) => {
+      setParentInfo((prev) => ({ ...prev, ...values }));
       setOpen(false);
       message.success("Cập nhật thông tin thành công!");
     });
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(90deg, #e3f0ff 0%, #f8fdff 100%)", padding: 0 }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(90deg, #e3f0ff 0%, #f8fdff 100%)",
+        padding: 0,
+      }}
+    >
       {/* Nút quay lại */}
       <Button
-        icon={<ArrowLeftOutlined style={{ fontSize: 20, color: '#1976d2' }} />}
+        icon={<ArrowLeftOutlined style={{ fontSize: 20, color: "#1976d2" }} />}
         style={{
           position: "absolute",
           top: 32,
@@ -62,55 +84,115 @@ export default function Profile() {
           transition: "all 0.2s",
         }}
         onClick={() => navigate("/home")}
-        onMouseOver={e => {
-          e.currentTarget.style.background = '#e3f0ff';
-          e.currentTarget.style.color = '#1565c0';
-          e.currentTarget.style.borderColor = '#1565c0';
+        onMouseOver={(e) => {
+          e.currentTarget.style.background = "#e3f0ff";
+          e.currentTarget.style.color = "#1565c0";
+          e.currentTarget.style.borderColor = "#1565c0";
         }}
-        onMouseOut={e => {
-          e.currentTarget.style.background = '#fff';
-          e.currentTarget.style.color = '#1976d2';
-          e.currentTarget.style.borderColor = '#1976d2';
+        onMouseOut={(e) => {
+          e.currentTarget.style.background = "#fff";
+          e.currentTarget.style.color = "#1976d2";
+          e.currentTarget.style.borderColor = "#1976d2";
         }}
       >
         Quay lại
       </Button>
       {/* Banner giả lập */}
-      <div style={{ width: "100%", height: 180, background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)", position: "relative", marginBottom: 0 }}>
-        <Title level={2} style={{ color: "white", position: "absolute", left: "50%", bottom: 32, transform: "translateX(-50%)", textShadow: "0 2px 8px #2196f399" }}>
+      <div
+        style={{
+          width: "100%",
+          height: 180,
+          background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
+          position: "relative",
+          marginBottom: 0,
+        }}
+      >
+        <Title
+          level={2}
+          style={{
+            color: "white",
+            position: "absolute",
+            left: "50%",
+            bottom: 32,
+            transform: "translateX(-50%)",
+            textShadow: "0 2px 8px #2196f399",
+          }}
+        >
           Trang cá nhân phụ huynh
         </Title>
       </div>
       <Row justify="center" style={{ marginTop: -90 }}>
         <Col span={20}>
           <Card
-            style={{ borderRadius: 24, boxShadow: "0 8px 32px 0 #2196f322", minHeight: 380 }}
+            style={{
+              borderRadius: 24,
+              boxShadow: "0 8px 32px 0 #2196f322",
+              minHeight: 380,
+            }}
             bodyStyle={{ padding: 0 }}
           >
             <Row gutter={0}>
               {/* Avatar và tên phụ huynh */}
-              <Col span={8} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "linear-gradient(180deg, #e3f0ff 0%, #f8fdff 100%)", borderTopLeftRadius: 24, borderBottomLeftRadius: 24, padding: "48px 0" }}>
+              <Col
+                span={8}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background:
+                    "linear-gradient(180deg, #e3f0ff 0%, #f8fdff 100%)",
+                  borderTopLeftRadius: 24,
+                  borderBottomLeftRadius: 24,
+                  padding: "48px 0",
+                }}
+              >
                 <Avatar
                   src={parentInfo.avatar}
                   size={160}
                   icon={<UserOutlined />}
-                  style={{ border: "6px solid #fff", boxShadow: "0 4px 24px #2196f344", marginBottom: 24 }}
+                  style={{
+                    border: "6px solid #fff",
+                    boxShadow: "0 4px 24px #2196f344",
+                    marginBottom: 24,
+                  }}
                 />
-                <Title level={3} style={{ marginBottom: 0, color: "#1976d2" }}>{parentInfo.hoTenPhuHuynh}</Title>
+                <Title level={3} style={{ marginBottom: 0, color: "#1976d2" }}>
+                  {parentInfo.hoTenPhuHuynh}
+                </Title>
                 <Text type="secondary">Phụ huynh</Text>
               </Col>
               {/* Thông tin cá nhân */}
-              <Col span={16} style={{ padding: "48px 56px", position: "relative" }}>
+              <Col
+                span={16}
+                style={{ padding: "48px 56px", position: "relative" }}
+              >
                 <Button
                   type="primary"
                   icon={<EditOutlined />}
                   size="large"
-                  style={{ position: "absolute", top: 32, right: 56, borderRadius: 8, fontWeight: 600, boxShadow: "0 2px 8px #2196f344" }}
+                  style={{
+                    position: "absolute",
+                    top: 32,
+                    right: 56,
+                    borderRadius: 8,
+                    fontWeight: 600,
+                    boxShadow: "0 2px 8px #2196f344",
+                  }}
                   onClick={handleEdit}
                 >
                   Chỉnh sửa thông tin cá nhân
                 </Button>
-                <Title level={4} style={{ color: "#1976d2", marginBottom: 32, fontWeight: 700 }}>Thông tin cá nhân</Title>
+                <Title
+                  level={4}
+                  style={{
+                    color: "#1976d2",
+                    marginBottom: 32,
+                    fontWeight: 700,
+                  }}
+                >
+                  Thông tin cá nhân
+                </Title>
                 <Row gutter={[32, 24]}>
                   <Col span={12}>
                     <Text strong>Họ và tên của con:</Text>
@@ -161,10 +243,21 @@ export default function Profile() {
             soDienThoai: parentInfo.soDienThoai,
           }}
         >
-          <Form.Item label="Địa chỉ" name="diaChi" rules={[{ required: true, message: "Vui lòng nhập địa chỉ" }]}> 
+          <Form.Item
+            label="Địa chỉ"
+            name="diaChi"
+            rules={[{ required: true, message: "Vui lòng nhập địa chỉ" }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="Số điện thoại" name="soDienThoai" rules={[{ required: true, message: "Vui lòng nhập số điện thoại" }, { pattern: /^0\d{9}$/, message: "Số điện thoại không hợp lệ" }]}> 
+          <Form.Item
+            label="Số điện thoại"
+            name="soDienThoai"
+            rules={[
+              { required: true, message: "Vui lòng nhập số điện thoại" },
+              { pattern: /^0\d{9}$/, message: "Số điện thoại không hợp lệ" },
+            ]}
+          >
             <Input maxLength={10} />
           </Form.Item>
         </Form>

@@ -18,11 +18,12 @@ import {
   ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-// Dữ liệu mẫu, bạn có thể thay thế bằng dữ liệu thực tế lấy từ API hoặc props
+// Dữ liệu mẫu
 const initialParentInfo = {
   avatar: "https://i.pravatar.cc/300?img=32", // Link ảnh avatar mẫu
-  hoTenPhuHuynh: "Nguyễn Văn A",
+  hoTenPhuHuynh: "Chưa đăng nhập",
   hoTenCon: "Nguyễn Văn B",
   ngaySinh: "01/01/2010",
   diaChi: "123 Đường ABC, Quận 1, TP.HCM",
@@ -35,7 +36,11 @@ const { Option } = Select;
 
 export default function Profile() {
   const navigate = useNavigate();
-  const [parentInfo, setParentInfo] = useState(initialParentInfo);
+  const user = useSelector((state) => state.user).user;
+  const [parentInfo, setParentInfo] = useState({
+    ...initialParentInfo,
+    hoTenPhuHuynh: user ? user.fullName : "Chưa đăng nhập"
+  });
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
 

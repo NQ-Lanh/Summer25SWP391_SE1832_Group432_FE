@@ -33,13 +33,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const [showNoProfileDialog, setShowNoProfileDialog] = useState(false);
 
-  useEffect(() => {
-    if (user) {
-      // Logic for when user is logged in
-    } else {
-      // Logic for when user is not logged in
-    }
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   const handleUserMenu = (event) => {
     setUserAnchorEl(event.currentTarget);
@@ -109,220 +103,220 @@ const Header = () => {
 
   return (
     <>
-    <AppBar
-      position="fixed"
-      sx={{
-        background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
-        color: "white",
-        boxShadow: "0 4px 24px 0 rgba(33,150,243,0.10)",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-      }}
-    >
-      <Box
+      <AppBar
+        position="fixed"
         sx={{
-          display: "flex",
-          alignItems: "center",
-          minHeight: "80px",
-          width: "100%",
+          background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
+          color: "white",
+          boxShadow: "0 4px 24px 0 rgba(33,150,243,0.10)",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       >
         <Box
-          component="img"
-          src="/public/images/logo.png"
-          alt="Logo Y Tế Học Đường"
-          className="logo"
           sx={{
-            height: 65,
-            maxHeight: 65,
-            width: "auto",
-            mr: 2,
-            ml: 1.5,
-            cursor: "pointer",
-            objectFit: "contain",
-            display: "block",
-            borderRadius: "16px",
-            boxShadow: "0 2px 8px 0 rgba(33,150,243,0.10)",
+            display: "flex",
+            alignItems: "center",
+            minHeight: "80px",
+            width: "100%",
           }}
-        />
-        <Container maxWidth="lg" sx={{ pl: 0, pr: 0, flex: 1 }}>
-          <Toolbar
+        >
+          <Box
+            component="img"
+            src="/public/images/logo.png"
+            alt="Logo Y Tế Học Đường"
+            className="logo"
             sx={{
-              padding: { xs: 1, md: 0 },
-              minHeight: "80px",
-              alignItems: "center",
-              pl: 0,
+              height: 65,
+              maxHeight: 65,
+              width: "auto",
+              mr: 2,
+              ml: 1.5,
+              cursor: "pointer",
+              objectFit: "contain",
+              display: "block",
+              borderRadius: "16px",
+              boxShadow: "0 2px 8px 0 rgba(33,150,243,0.10)",
             }}
-          >
-            <Box
+          />
+          <Container maxWidth="lg" sx={{ pl: 0, pr: 0, flex: 1 }}>
+            <Toolbar
               sx={{
-                display: "flex",
+                padding: { xs: 1, md: 0 },
+                minHeight: "80px",
                 alignItems: "center",
-                backgroundColor: "#f5fafd",
-                borderRadius: "24px",
-                padding: "4px 16px",
-                width: "100%",
-                maxWidth: "400px",
-                marginLeft: { xs: 1, md: 4 },
-                marginRight: { xs: 1, md: 4 },
-                boxShadow: "0 1px 6px 0 rgba(33,150,243,0.08)",
-                "&:hover": {
-                  backgroundColor: "#e3f2fd",
-                },
+                pl: 0,
               }}
             >
-              <SearchIcon sx={{ color: "#2196f3", mr: 1 }} />
-              <InputBase
-                placeholder="Tìm kiếm thông tin y tế, tin tức..."
+              <Box
                 sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "#f5fafd",
+                  borderRadius: "24px",
+                  padding: "4px 16px",
                   width: "100%",
-                  color: "#2196f3",
-                  fontWeight: 500,
-                  "& input": {
-                    padding: "8px 0",
-                    color: "#2196f3",
-                      "::placeholder": {
-                      color: "#bdbdbd",
-                      opacity: 1,
-                    },
+                  maxWidth: "400px",
+                  marginLeft: { xs: 1, md: 4 },
+                  marginRight: { xs: 1, md: 4 },
+                  boxShadow: "0 1px 6px 0 rgba(33,150,243,0.08)",
+                  "&:hover": {
+                    backgroundColor: "#e3f2fd",
                   },
                 }}
-              />
-            </Box>
+              >
+                <SearchIcon sx={{ color: "#2196f3", mr: 1 }} />
+                <InputBase
+                  placeholder="Tìm kiếm thông tin y tế, tin tức..."
+                  sx={{
+                    width: "100%",
+                    color: "#2196f3",
+                    fontWeight: 500,
+                    "& input": {
+                      padding: "8px 0",
+                      color: "#2196f3",
+                      "::placeholder": {
+                        color: "#bdbdbd",
+                        opacity: 1,
+                      },
+                    },
+                  }}
+                />
+              </Box>
 
-            <Box sx={{ flexGrow: 1, display: "flex" }}>
-              {menuItems.map(
-                (item) =>
-                  item.id !== "health-profile" && (
-                    <Button
-                      key={item.text}
-                      onClick={() => handleMenuClick(item.id)}
-                      sx={{
-                        color: item.id === "contact" ? "#ffd600" : "white",
-                        fontWeight: 500,
-                        textShadow: "0 1px 4px rgba(0,0,0,0.10)",
-                        "&:hover": {
-                          color: "#ffd600",
-                        },
+              <Box sx={{ flexGrow: 1, display: "flex" }}>
+                {menuItems.map(
+                  (item) =>
+                    item.id !== "health-profile" && (
+                      <Button
+                        key={item.text}
+                        onClick={() => handleMenuClick(item.id)}
+                        sx={{
+                          color: item.id === "contact" ? "#ffd600" : "white",
+                          fontWeight: 500,
+                          textShadow: "0 1px 4px rgba(0,0,0,0.10)",
+                          "&:hover": {
+                            color: "#ffd600",
+                          },
+                        }}
+                      >
+                        {item.text}
+                      </Button>
+                    )
+                )}
+              </Box>
+
+              {user ? (
+                <>
+                  <Typography sx={{ ml: 1, color: "white", fontWeight: 500 }}>
+                    {user.fullName}
+                  </Typography>
+                  <IconButton
+                    onClick={handleUserMenu}
+                    sx={{
+                      ml: 2,
+                      p: 0.5,
+                      "&:hover": {
+                        color: "#ffd600",
+                      },
+                    }}
+                  >
+                    <AccountCircleIcon sx={{ fontSize: 44 }} />
+                  </IconButton>
+                  <Menu
+                    anchorEl={userAnchorEl}
+                    open={Boolean(userAnchorEl)}
+                    onClose={handleUserClose}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                  >
+                    <MenuItem
+                      onClick={() => {
+                        handleUserClose();
+                        navigate("/profile");
                       }}
                     >
-                      {item.text}
-                    </Button>
-                  )
-              )}
-            </Box>
-
-            {user ? (
-              <>
-                <Typography sx={{ ml: 1, color: "white", fontWeight: 500 }}>
-                  {user.fullName}
-                </Typography>
-                <IconButton
-                  onClick={handleUserMenu}
-                  sx={{
-                    ml: 2,
-                    p: 0.5,
-                    "&:hover": {
-                      color: "#ffd600",
-                    },
-                  }}
-                >
-                  <AccountCircleIcon sx={{ fontSize: 44 }} />
-                </IconButton>
-                <Menu
-                  anchorEl={userAnchorEl}
-                  open={Boolean(userAnchorEl)}
-                  onClose={handleUserClose}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "right",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                >
-                  <MenuItem
-                    onClick={() => {
-                      handleUserClose();
-                      navigate("/profile");
-                    }}
-                  >
-                    Thông tin cá nhân
-                  </MenuItem>
-                  <MenuItem onClick={handleHealthProfileMenuClick}>
-                    Hồ sơ sức khỏe học sinh
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      handleUserClose();
+                      Thông tin cá nhân
+                    </MenuItem>
+                    <MenuItem onClick={handleHealthProfileMenuClick}>
+                      Hồ sơ sức khỏe học sinh
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        handleUserClose();
                         navigate("/event");
-                    }}
-                  >
-                    Thông báo sự kiện 
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      handleUserClose();
-                      navigate("/dashboard/parent_profile");
-                    }}
-                  >
-                    Gửi thuốc
-                  </MenuItem>
+                      }}
+                    >
+                      Thông báo sự kiện
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        handleUserClose();
+                        navigate("/dashboard/parent_profile");
+                      }}
+                    >
+                      Gửi thuốc
+                    </MenuItem>
 
-                  <MenuItem
-                    onClick={() => {
-                      handleUserClose();
-                      setShowLogoutModal(true);
+                    <MenuItem
+                      onClick={() => {
+                        handleUserClose();
+                        setShowLogoutModal(true);
+                      }}
+                    >
+                      Đăng xuất
+                    </MenuItem>
+                  </Menu>
+                </>
+              ) : (
+                <Box sx={{ display: "flex", gap: 2, ml: 2 }}>
+                  <Button
+                    variant="outlined"
+                    color="inherit"
+                    sx={{
+                      borderRadius: 3,
+                      borderColor: "#fff",
+                      color: "#fff",
+                      fontWeight: 600,
+                      px: 2,
+                      "&:hover": {
+                        background: "rgba(255,255,255,0.15)",
+                        borderColor: "#ffd600",
+                        color: "#ffd600",
+                      },
                     }}
+                    onClick={() => navigate("/login")}
                   >
-                    Đăng xuất
-                  </MenuItem>
-                </Menu>
-              </>
-            ) : (
-              <Box sx={{ display: "flex", gap: 2, ml: 2 }}>
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  sx={{
-                    borderRadius: 3,
-                    borderColor: "#fff",
-                    color: "#fff",
-                    fontWeight: 600,
-                    px: 2,
-                    "&:hover": {
-                      background: "rgba(255,255,255,0.15)",
-                      borderColor: "#ffd600",
-                      color: "#ffd600",
-                    },
-                  }}
-                  onClick={() => navigate("/login")}
-                >
-                  Đăng nhập
-                </Button>
-                <Button
-                  variant="contained"
-                  color="warning"
-                  sx={{
-                    borderRadius: 3,
-                    fontWeight: 600,
-                    px: 2,
-                    boxShadow: "0 2px 8px 0 rgba(255,214,0,0.15)",
-                    color: "#fff",
-                    "&:hover": { background: "#ffb300" },
-                  }}
-                  onClick={() => navigate("/register")}
-                >
-                  Đăng ký
-                </Button>
-              </Box>
-            )}
-          </Toolbar>
-        </Container>
-      </Box>
+                    Đăng nhập
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="warning"
+                    sx={{
+                      borderRadius: 3,
+                      fontWeight: 600,
+                      px: 2,
+                      boxShadow: "0 2px 8px 0 rgba(255,214,0,0.15)",
+                      color: "#fff",
+                      "&:hover": { background: "#ffb300" },
+                    }}
+                    onClick={() => navigate("/register")}
+                  >
+                    Đăng ký
+                  </Button>
+                </Box>
+              )}
+            </Toolbar>
+          </Container>
+        </Box>
 
         <Modal
           title="Đăng xuất"

@@ -85,9 +85,11 @@ const BlogDetailDynamic = () => {
       setCommentsLoading(true);
       try {
         const res = await api.get(`/blog-comments/blog/${blogPostId}`);
-        // Lấy comments từ $values và lọc status Active
+        // Lấy comments từ $values và lọc status Active, sắp xếp theo thời gian mới nhất trước
         const activeComments = res.data.$values
-          ? res.data.$values.filter((comment) => comment.status === "Active")
+          ? res.data.$values
+              .filter((comment) => comment.status === "Active")
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           : [];
         console.log("Active comments:", activeComments); // Để debug
         setComments(activeComments);
@@ -105,29 +107,35 @@ const BlogDetailDynamic = () => {
     fetchComments();
   }, [blogPostId]);
 
-  // Format date with validation
+  // Format date with validation - tự động cộng 7 giờ cho múi giờ Việt Nam
   const formatDate = (dateString) => {
     if (!dateString) return "Không có thông tin";
     const date = new Date(dateString);
-    return !isNaN(date.getTime())
-      ? date.toLocaleDateString("vi-VN", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        })
-      : "Không có thông tin";
+    if (isNaN(date.getTime())) return "Không có thông tin";
+    
+    // Cộng thêm 7 giờ cho múi giờ Việt Nam (UTC+7)
+    const vietnamTime = new Date(date.getTime() + (7 * 60 * 60 * 1000));
+    
+    return vietnamTime.toLocaleDateString("vi-VN", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
   };
 
-  // Format time with validation
+  // Format time with validation - tự động cộng 7 giờ cho múi giờ Việt Nam
   const formatTime = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
-    return !isNaN(date.getTime())
-      ? date.toLocaleTimeString("vi-VN", {
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-      : "";
+    if (isNaN(date.getTime())) return "";
+    
+    // Cộng thêm 7 giờ cho múi giờ Việt Nam (UTC+7)
+    const vietnamTime = new Date(date.getTime() + (7 * 60 * 60 * 1000));
+    
+    return vietnamTime.toLocaleTimeString("vi-VN", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
   };
 
   // Comment handling functions
@@ -163,7 +171,9 @@ const BlogDetailDynamic = () => {
     try {
       const res = await api.get(`/blog-comments/blog/${blogPostId}`);
       const activeComments = res.data.$values
-        ? res.data.$values.filter((comment) => comment.status === "Active")
+        ? res.data.$values
+            .filter((comment) => comment.status === "Active")
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
         : [];
       setComments(activeComments);
       setCommentsError(null);
